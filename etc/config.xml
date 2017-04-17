@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Store/etc/config.xsd">
+    <default>
+        <payment>
+
+            <!-- Pagseguro Redirect - Default Values-->
+            <pagseguro_redirect>
+                <model>Gabrielqs\Pagseguro\Model\Redirect</model>
+                <payment_action>order</payment_action>
+                <active>0</active>
+                <title>PagSeguro</title>
+                <sort_order>10</sort_order>
+                <min_order_total>0</min_order_total>
+                <autoinvoice_mode_enabled>1</autoinvoice_mode_enabled>
+                <autocancel_mode_enabled>1</autocancel_mode_enabled>
+                <maximum_installment_quantity>12</maximum_installment_quantity>
+                <minimum_installment_value>5</minimum_installment_value>
+                <interest_rate>1.99</interest_rate>
+
+                <!-- Test Credentials -->
+                <test_merchant_email>financeiro@gabrielqsecommerce.com</test_merchant_email>
+                <test_integration_token>83BE1D1B1CCE4662AA43971354F22FE5</test_integration_token>
+            </pagseguro_redirect>
+
+        </payment>
+
+        <!-- Will be used by the installments module to compute installments -->
+        <installments>
+            <payment_methods>
+                <pagseguro_redirect>
+                    <installments_helper>Gabrielqs\Pagseguro\Helper\Redirect\Installments</installments_helper>
+                </pagseguro_redirect>
+            </payment_methods>
+        </installments>
+    </default>
+</config>
